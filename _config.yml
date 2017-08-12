@@ -78,5 +78,5 @@ theme: vue
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:awurth/awurth.github.io.git
-  branch: github-pages
+  repository: git@github.com:awurth/awurth.fr.git
+  branch: gh-pages
