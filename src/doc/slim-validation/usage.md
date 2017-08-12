@@ -1,6 +1,7 @@
 ---
 title: Usage
 type: guide
+category: Slim Validation
 order: 2
 ---
 
@@ -129,14 +130,13 @@ public function register(Request $request, Response $response)
             'password' => V::length(6, 25),
             'confirm_password' => V::equals($request->getParam('password'))
         ]);
-        
+
         if ($this->validator->isValid()) {
             // Register user in database
-            
             return $response->withRedirect('url');
         }
     }
-    
+
     return $this->view->render($response, 'register.twig');
 }
 ```
@@ -146,13 +146,13 @@ public function register(Request $request, Response $response)
 <form action="url" method="POST">
     <input type="text" name="username" value="{{ val('username') }}">
     {% if has_error('username') %}<span>{{ error('username') }}</span>{% endif %}
-    
+
     <input type="text" name="email" value="{{ val('email') }}">
     {% if has_error('email') %}<span>{{ error('email') }}</span>{% endif %}
-    
+
     <input type="text" name="password">
     {% if has_error('password') %}<span>{{ error('password') }}</span>{% endif %}
-    
+
     <input type="text" name="confirm_password">
     {% if has_error('confirm_password') %}<span>{{ error('confirm_password') }}</span>{% endif %}
 </form>

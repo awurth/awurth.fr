@@ -1,6 +1,7 @@
 ---
 title: Installation
 type: guide
+category: Slim Validation
 order: 1
 ---
 
