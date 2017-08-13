@@ -20,7 +20,7 @@ Creates a new Validator instance.
 * *(Optional)* `$defaultMessages` **array**
     *default* **array()**
 
-    An array of messages to overwrite the default [Respect Validation](https://github.com/Respect/Validation) messages
+    An array of messages to overwrite the default [Respect Validation](https://github.com/Respect/Validation) messages. See [setDefaultMessages()](#setDefaultMessages-messages)
 
 #### Usage
 ``` php
@@ -102,6 +102,9 @@ Gets the error message of a request parameter for the given validation rule.
 ### getData( )
 > *@deprecated* since version 2.1, will be removed in 3.0. Use `getValues()` instead.
 
+#### Return *array*
+
+### getValues( )
 Gets the validated data.
 
 #### Return *array*
@@ -115,6 +118,22 @@ Gets the value of a request parameter in validated data.
     The request parameter's name
 
 #### Return *mixed*
+
+### addErrors( $param, $messages )
+> *@deprecated* since version 2.1, will be removed in 3.0. Use addError() instead.
+
+Adds error messages for a request parameter.
+
+#### Arguments
+* `$param` **string**
+
+    The request parameter's name
+
+* `$messages` **array**
+
+    An array of error messages
+
+#### Return *Validator*
 
 ### addError( $param, $message )
 Adds an error message for a request parameter. Useful if you want to add a message without using the validate method.
@@ -130,19 +149,33 @@ Adds an error message for a request parameter. Useful if you want to add a messa
 
 #### Return *Validator*
 
-### addErrors( $param, $messages )
-> *@deprecated* since version 2.1, will be removed in 3.0.
-
-Adds error messages for a request parameter.
+### setDefaultMessages( $messages )
+Sets default error messages.
 
 #### Arguments
-* `$param` **string**
-
-    The request parameter's name
-
 * `$messages` **array**
 
-    An array of error messages
+    An array of error messages associated to validation rules names
+    ``` php
+    $messages = [
+        'length' => 'This field must have a length between {{minValue}} and {{maxValue}} characters',
+        'notBlank' => 'This field is required'
+    ];
+    ```
+
+#### Return *Validator*
+
+### setDefaultMessage( $rule, $message )
+Sets default error messages.
+
+#### Arguments
+* `$rule` **string**
+
+    The validation rule name
+
+* `$message` **string**
+
+    The error message
 
 #### Return *Validator*
 
