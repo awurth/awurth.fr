@@ -7,7 +7,7 @@ order: 3
 
 ## Validator
 
-### __construct( [ bool $storeErrorsWithRules = true [, array $defaultMessages = [] ]] )
+### __construct( [ $storeErrorsWithRules [, $defaultMessages ]] )
 Creates a new Validator instance.
 
 #### Arguments
@@ -33,7 +33,7 @@ $validator = new Validator(true, [
     'notBlank' => 'Custom message for "notBlank" rule'
 ]);
 ```
-### validate( Request $request, array $rules [, array $messages = [] ] )
+### validate( $request, $rules [, $messages ] )
 Validates request parameters with the given validation rules.
 
 #### Arguments
@@ -65,7 +65,7 @@ Gets all errors.
 
 #### Return *array*
 
-### getFirstError( string $param )
+### getFirstError( $param )
 Gets the first error of a request parameter.
 
 #### Arguments
@@ -75,7 +75,7 @@ Gets the first error of a request parameter.
 
 #### Return *string*
 
-### getParamErrors( string $param )
+### getParamErrors( $param )
 Gets all errors of a request parameter.
 
 #### Arguments
@@ -85,7 +85,7 @@ Gets all errors of a request parameter.
 
 #### Return *array*
 
-### getParamRuleError( string $param, string $rule )
+### getParamRuleError( $param, $rule )
 Gets the error message of a request parameter for the given validation rule.
 
 #### Arguments
@@ -106,7 +106,7 @@ Gets the validated data.
 
 #### Return *array*
 
-### getValue( string $param )
+### getValue( $param )
 Gets the value of a request parameter in validated data.
 
 #### Arguments
@@ -116,7 +116,7 @@ Gets the value of a request parameter in validated data.
 
 #### Return *mixed*
 
-### addError( string $param, string $message )
+### addError( $param, $message )
 Adds an error message for a request parameter. Useful if you want to add a message without using the validate method.
 
 #### Arguments
@@ -130,7 +130,7 @@ Adds an error message for a request parameter. Useful if you want to add a messa
 
 #### Return *Validator*
 
-### addErrors( string $param, array $messages )
+### addErrors( $param, $messages )
 > *@deprecated* since version 2.1, will be removed in 3.0.
 
 Adds error messages for a request parameter.
@@ -146,7 +146,7 @@ Adds error messages for a request parameter.
 
 #### Return *Validator*
 
-### setErrors( array $errors )
+### setErrors( $errors )
 Sets errors (overwrites all errors).
 
 #### Arguments
@@ -165,7 +165,7 @@ Sets errors (overwrites all errors).
     ];
     ```
 
-### setParamErrors( string $param, array $errors )
+### setParamErrors( $param, $errors )
 Sets the errors of a request parameter.
 
 #### Arguments
@@ -179,7 +179,7 @@ Sets the errors of a request parameter.
 
 #### Return *Validator*
 
-### setValues( array $data )
+### setValues( $data )
 > Replaced by `setValues()` and `addValue()` in version 3.0.
 
 Merges the validated data with `$data`.
