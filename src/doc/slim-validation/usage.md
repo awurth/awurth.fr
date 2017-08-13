@@ -81,6 +81,8 @@ To use the extension, you must install twig first
 $ composer require slim/twig-view
 ```
 
+**See the [API](api.html#Twig-Extension) for available features**
+
 ### Configuration
 ``` php
 $container['view'] = function ($container) {
@@ -95,27 +97,6 @@ $container['view'] = function ($container) {
 
     return $view;
 };
-```
-
-### Functions
-``` twig
-{# Use has_errors() function to know if a form contains errors #}
-{{ has_errors() }}
-
-{# Use has_error() function to know if a request parameter is invalid #}
-{{ has_error('param') }}
-
-{# Use error() function to get the first error of a parameter #}
-{{ error('param') }}
-
-{# Use errors() function to get all errors #}
-{{ errors() }}
-
-{# Use errors() function with the name of a parameter to get all errors of a parameter #}
-{{ errors('param') }}
-
-{# Use val() function to get the value of a parameter #}
-{{ val('param') }}
 ```
 
 ## Example

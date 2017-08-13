@@ -198,3 +198,48 @@ Merges the validated data with `$data`.
 #### Return *Validator*
 
 ## Twig Extension
+
+### has_errors( )
+Tells if the validator contains errors.
+
+#### Return *bool*
+
+### has_error( param )
+Tells if there is an error message for the given request parameter.
+
+#### Arguments
+* `param` **string**
+
+    The request parameter's name
+
+#### Return *bool*
+
+### error( param )
+Gets the first error message for the given request parameter.
+
+#### Arguments
+* `param` **string**
+
+    The request parameter's name
+
+#### Return *string*
+
+### errors( [ param ] )
+Gets all errors.
+
+#### Arguments
+* *(Optional)* `param` **string**
+
+    The request parameter's name. If specified, the function will only return errors of this parameter
+
+#### Return *array*
+
+### val( param )
+Gets the value of a request parameter in validated data. Can be used to set the `value=""` html attribute after submitting a form that contains errors.
+
+#### Arguments
+* `param` **string**
+
+    The request parameter's name
+
+#### Return *mixed*
