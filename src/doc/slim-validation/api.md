@@ -180,7 +180,7 @@ Sets the errors of a request parameter.
 #### Return *Validator*
 
 ### setValues( $data )
-> Replaced by `setValues()` and `addValue()` in version 3.0.
+> Replaced by `setValues()` and `setValue()` in version 3.0.
 
 Merges the validated data with `$data`.
 
