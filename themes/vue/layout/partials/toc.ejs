@@ -4,6 +4,9 @@
         <% if (type === 'guide') { %>
             <% if (p.category.length && p.order === 1) { %>
                 <li><h3><%- p.category %></h3></li>
+                <% if (p.github) { %>
+                    <li><a href="<%- p.github %>" class="sidebar-link">View on Github</a></li>
+                <% } %>
             <% } %>
         <% } %>
         <% if (type === 'cookbook') { %>

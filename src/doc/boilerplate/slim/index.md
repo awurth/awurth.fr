@@ -3,6 +3,7 @@ title: Installation
 type: guide
 category: Slim base
 order: 1
+github: https://github.com/awurth/slim-base
 ---
 
 ### Create project using Composer

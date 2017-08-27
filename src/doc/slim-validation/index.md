@@ -3,6 +3,7 @@ title: Installation
 type: guide
 category: Slim Validation
 order: 1
+github: https://github.com/awurth/slim-validation
 ---
 
 ### Download with Composer
