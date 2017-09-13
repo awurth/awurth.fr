@@ -2,6 +2,7 @@
 title: Usage
 type: guide
 category: Slim Validation
+version: 3
 order: 2
 ---
 
@@ -23,6 +24,142 @@ if ($validator->isValid()) {
 }
 ```
 
+## Validation methods
+### Request parameters validation
+``` php
+$_POST = [
+    'username' => 'awurth',
+    'password' => 'my_password'
+];
+```
+
+``` php
+/**
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ */
+
+$validator->request($request, [
+    'username' => V::notBlank(),
+    'password' => V::length(8)
+]);
+```
+
+### Object properties validation
+``` php
+class ObjectToValidate {
+    private $privateProperty;
+    protected $protectedProperty;
+    public $pulicProperty;
+    
+    // ...
+}
+```
+
+``` php
+/**
+ * @var object $object
+ */
+
+$validator->object($object, [
+    'privateProperty' => V::notBlank(),
+    'protectedProperty' => V::notBlank(),
+    'publicProperty' => V::notBlank()
+]);
+```
+
+If a property does not exist, the tested value will be `null`
+
+### Array validation
+``` php
+$arrayToValidate = [
+    'key_1' => 'value_1',
+    'key_2' => 'value_2'
+];
+```
+
+``` php
+/**
+ * @var array $arrayToValidate
+ */
+
+$validator->array($arrayToValidate, [
+    'key_1' => V::notBlank(),
+    'key_2' => V::notBlank()
+]);
+```
+
+### Single value validation
+``` php
+$validator->value('12345', V::numeric(), 'secret_code');
+```
+
+### The validate() method
+``` php
+/**
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ */
+
+$validator->validate($request, [
+    'param' => V::notBlank()
+]);
+
+/**
+ * @var object $object
+ */
+
+$validator->validate($object, [
+    'property' => V::notBlank()
+]);
+
+/**
+ * @var array $array
+ */
+
+$validator->array($array, [
+    'key' => V::notBlank()
+]);
+```
+
+## Error groups
+``` php
+$user = [
+    'username' => 'awurth',
+    'password' => 'my_password'
+];
+
+$address = [
+    'street' => '...',
+    'city' => '...',
+    'country' => '...'
+];
+
+$validator->validate($user, [
+    // ...
+], 'user');
+
+$validator->validate($address, [
+    // ...
+], 'address');
+```
+
+``` php
+$validator->getErrors();
+
+// Will return:
+[
+    'user' => [
+        'username' => [
+            // Errors...
+        ]
+    ],
+    'address' => [
+        'street' => [
+            // Errors...
+        ]
+    ]
+]
+```
+
 ## Custom messages
 Slim Validation allows you to set custom messages for validation errors. There are 4 types of custom messages:
 
@@ -36,7 +173,7 @@ Messages that overwrite [Respect Validation](https://github.com/Respect/Validati
 $container->validator->validate($request, [
     'get_or_post_parameter_name' => V::length(6, 25)->alnum('_')->noWhitespace(),
     // ...
-], [
+], null, [
     'length' => 'Custom message',
     'alnum' => 'Custom message',
     // ...

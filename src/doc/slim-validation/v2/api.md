@@ -2,6 +2,7 @@
 title: API
 type: guide
 category: Slim Validation
+version: 2
 order: 3
 ---
 
@@ -76,6 +77,8 @@ Gets the first error of a request parameter.
 #### Return *string*
 
 ### getParamErrors( $param )
+> Replaced by `getErrors()` in version 3.0.
+
 Gets all errors of a request parameter.
 
 #### Arguments
@@ -86,6 +89,8 @@ Gets all errors of a request parameter.
 #### Return *array*
 
 ### getParamRuleError( $param, $rule )
+> Replaced by `getError()` in version 3.0.
+
 Gets the error message of a request parameter for the given validation rule.
 
 #### Arguments
@@ -199,6 +204,8 @@ Sets errors (overwrites all errors).
     ```
 
 ### setParamErrors( $param, $errors )
+> Replaced by `setErrors()` in version 3.0.
+
 Sets the errors of a request parameter.
 
 #### Arguments
