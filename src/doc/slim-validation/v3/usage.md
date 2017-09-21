@@ -118,6 +118,12 @@ $validator->validate($object, [
 $validator->array($array, [
     'key' => V::notBlank()
 ]);
+
+$secretCode = '12345';
+$validator->validate($secretCode, [
+    'rules' => V::numeric(),
+    'key' => 'secret_code'
+]);
 ```
 
 ## Error groups
@@ -134,11 +140,14 @@ $address = [
 ];
 
 $validator->validate($user, [
-    // ...
+    'username' => V::notBlank(),
+    'password' => V::notBlank()
 ], 'user');
 
 $validator->validate($address, [
-    // ...
+    'street'  => V::notBlank(),
+    'city'    => V::notBlank(),
+    'country' => V::notBlank()
 ], 'address');
 ```
 
@@ -148,14 +157,13 @@ $validator->getErrors();
 // Will return:
 [
     'user' => [
-        'username' => [
-            // Errors...
-        ]
+        'username' => [ /* Errors... */ ],
+        'password' => [ /* Errors... */ ]
     ],
     'address' => [
-        'street' => [
-            // Errors...
-        ]
+        'street'  => [ /* Errors... */ ],
+        'city'    => [ /* Errors... */ ],
+        'country' => [ /* Errors... */ ]
     ]
 ]
 ```
