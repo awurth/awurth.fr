@@ -61,9 +61,9 @@ class ObjectToValidate {
  */
 
 $validator->object($object, [
-    'privateProperty' => V::notBlank(),
+    'privateProperty'   => V::notBlank(),
     'protectedProperty' => V::notBlank(),
-    'publicProperty' => V::notBlank()
+    'publicProperty'    => V::notBlank()
 ]);
 ```
 
@@ -122,7 +122,7 @@ $validator->array($array, [
 $secretCode = '12345';
 $validator->validate($secretCode, [
     'rules' => V::numeric(),
-    'key' => 'secret_code'
+    'key'   => 'secret_code'
 ]);
 ```
 
@@ -134,8 +134,8 @@ $user = [
 ];
 
 $address = [
-    'street' => '...',
-    'city' => '...',
+    'street'  => '...',
+    'city'    => '...',
     'country' => '...'
 ];
 
