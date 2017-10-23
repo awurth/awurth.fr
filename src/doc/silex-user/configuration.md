@@ -1,7 +1,7 @@
 ---
 title: Configuration
 type: guide
-category: Silex User
+category: Silex User Bundle
 order: 3
 ---
 
