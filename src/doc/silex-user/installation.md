@@ -14,7 +14,7 @@ $ composer require awurth/silex-user
 ## Register the Service Provider
 Register the provider in the container:
 ``` php
-$app->register(new AWurth\Silex\User\Provider\SilexUserServiceProvider());
+$app->register(new AWurth\Silex\User\Provider\UserServiceProvider());
 ```
 ## Create your User class
 The goal of this bundle is to persist a `User` class to a database. Your first job, then, is to create the `User` class for your application. This class can look and act however you want: add any properties or methods you find useful.
