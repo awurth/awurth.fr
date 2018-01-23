@@ -13,7 +13,6 @@ $ composer create-project awurth/slim-base [project-name]
 
 ### Download Bower and npm dependencies
 ``` bash
-$ bower install
 $ npm install
 ```
 
