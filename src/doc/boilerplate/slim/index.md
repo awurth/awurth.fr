@@ -11,12 +11,12 @@ github: https://github.com/awurth/slim-base
 $ composer create-project awurth/slim-base [project-name]
 ```
 
-### Download Bower and npm dependencies
+### Download client-side libraries
 ``` bash
 $ npm install
 ```
 
-This will create a `lib/` folder in `public/` for jQuery and Semantic UI
+This will install Gulp dependencies and Semantic UI in `public/assets/lib/semantic/`
 
 #### Install Gulp globally
 ``` bash
