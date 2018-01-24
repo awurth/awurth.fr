@@ -3,43 +3,58 @@ title: Installation
 type: guide
 category: Slim base
 order: 1
-github: https://github.com/awurth/slim-base
+github: https://github.com/awurth/Slim
 ---
 
-### Create project using Composer
+### Create the project using Composer
 ``` bash
 $ composer create-project awurth/slim-base [project-name]
 ```
 
-### Download client-side libraries
+### Setup environment variables
+
+Copy `.env.dist` to a `.env` file and change the values to your needs. This file is ignored by Git so all developers working on the project can have their own configuration.
+
+## Download client-side libraries
 ``` bash
 $ npm install
 ```
+This will install Gulp dependencies, and Semantic UI in `public/assets/lib/semantic/`.
 
-This will install Gulp dependencies and Semantic UI in `public/assets/lib/semantic/`
+### Gulp
+This skeleton uses Gulp to manage assets. The CSS and Javascript files are located in `assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
 
-#### Install Gulp globally
+### Install Gulp
+You can install Gulp globally on your system with the following command if you haven't done it yet
 ``` bash
 $ npm install -g gulp-cli
 ```
 
-#### Run watcher to compile SASS and Javascript
+### Generate assets
+If you just want to generate the default CSS and JS that comes with this skeleton, run the following command
+``` bash
+$ gulp build
+```
+
+If you want to run a watcher and begin coding, just run
 ``` bash
 $ gulp
 ```
 
-You may have to edit the files in `src/App/Resources/assets/` while running gulp for the first time to generate the static `css` and `js` files
+### Setup cache files permissions
+The skeleton uses a cache system for Twig templates and the Monolog library for logging, so you have to make sure that PHP has write permissions on the `var/cache/` and `var/log/` directories.
 
-### Setup permissions
-You will have to give write permissions to the `cache/` folder
-
+### Update your database schema
+First, create a database with the name you set in the `.env` file. Then you can create the tables by running this command:
 ``` bash
-$ chmod 777 cache/twig
+$ php bin/console db
 ```
 
-### Create tables
-After creating a database with the name you set during the installation (or manually in `bootstrap/parameters.yml`), create tables by executing the `bootstrap/database.php` file
-
+If you're using [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh), you can install the symfony2 plugin, which provides an alias and autocompletion:
 ``` bash
-$ php bootstrap/database.php
+# Without Symfony2 plugin
+$ php bin/console db
+
+# With Symfony2 plugin
+$ sf db
 ```
